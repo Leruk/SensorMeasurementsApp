@@ -2,13 +2,15 @@ package org.leruk.spring.SensorMeasurementsApp.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Sensor")
-public class Sensor {
+public class Sensor implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +21,7 @@ public class Sensor {
     @Size(min = 2, max = 100, message = "Sensor's name should be between 3 and 30 characters")
     private String name;
 
+    @NotNull
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

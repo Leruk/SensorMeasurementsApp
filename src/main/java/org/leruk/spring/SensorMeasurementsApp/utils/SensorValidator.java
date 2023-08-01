@@ -23,7 +23,7 @@ public class SensorValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Sensor sensor = (Sensor) target;
 
-        if (sensorService.findSensorByName(sensor.getName()) != null) {
+        if (sensorService.findByName(sensor.getName()).isPresent()) {
             errors.rejectValue("name", "", "A sensor with that name has already been created");
         }
 

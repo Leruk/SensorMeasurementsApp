@@ -31,7 +31,7 @@ public class SensorService {
         return sensor.orElseThrow(SensorNotFoundException::new);
     }
 
-    public Sensor findSensorByName(String name)
+    public Optional<Sensor> findByName(String name)
     {
         return sensorRepository.findByName(name);
     }
